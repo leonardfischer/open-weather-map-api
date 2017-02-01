@@ -22,7 +22,7 @@ class API extends Request
 
 
 	/**
-	 * Retrieves weather data by given coordinates.
+	 * Retrieves weather data by geo coordinates.
 	 *
 	 * @param float $lat
 	 * @param float $lng
@@ -35,27 +35,27 @@ class API extends Request
 
 
 	/**
-	 * Retrieves weather data by given coordinates.
+	 * Retrieves weather data by ZIP code and (optional) country code.
 	 *
 	 * @param string $zip
-	 * @param string $country
+	 * @param string $countryCode
 	 * @return array
 	 */
-	public function getByZipCode ($zip, $country = null)
+	public function getByZipCode ($zip, $countryCode = null)
 	{
-		return $this->fetch(['zip' => $zip . ($country !== null ? ',' . $country : '')])->getResponseArray();
+		return $this->fetch(['zip' => $zip . ($countryCode !== null ? ',' . $countryCode : '')])->getResponseArray();
 	} // function
 
 
 	/**
-	 * Retrieves weather data by given coordinates.
+	 * Retrieves weather data by city name and (optional) country code.
 	 *
 	 * @param string $city
-	 * @param string $country
+	 * @param string $countryCode
 	 * @return array
 	 */
-	public function getByCityName ($city, $country = null)
+	public function getByCityName ($city, $countryCode = null)
 	{
-		return $this->fetch(['q' => $city . ($country !== null ? ',' . $country : '')])->getResponseArray();
+		return $this->fetch(['q' => $city . ($countryCode !== null ? ',' . $countryCode : '')])->getResponseArray();
 	} // function
 } // class
