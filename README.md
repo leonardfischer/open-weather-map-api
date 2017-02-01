@@ -5,7 +5,7 @@ It is extremely lightweight and provides all necessary code.
 
 ## Code Example
 
-Using the API is very easy - you'll only need to provide a API key (Get one [here](https://www.wunderground.com/weather/api/)) in order to use it. There are functions for retrieving different weather data by predefined conditions, like "by country and city", "by latitude and longitude", "by airport code" or even "by IP address".
+Using the API is very easy - you'll only need to provide a API key (Get one [here](https://openweathermap.org/appid)) in order to use it. There are functions for retrieving different weather data by predefined conditions, like "by country and city", "by latitude and longitude", "by airport code" or even "by IP address".
 
 ```php
 // By default the current conditions will be requested in english language.
