@@ -11,16 +11,23 @@
 		"homepage": "http://leonardfischer.de",
 		"role": "Developer"
 	}],
+	"suggest": {
+		"ext-curl": "*",
+		"ext-libxml": "*",
+		"ext-simplexml": "*",
+		"guzzlehttp/guzzle": "^5|^6|^7"
+	},
     "support": {
         "issues": "https://github.com/leonardfischer/open-weather-map-api/issues",
         "source": "https://github.com/leonardfischer/open-weather-map-api"
     },
 	"require": {
-		"php": ">=5.6.0"
+		"php": ">=7.2.0",
+		"ext-json": "*"
 	},
 	"autoload": {
 		"psr-4": {
-			"lfischer\\openWeatherMap\\": "src/"
+			"lfischer\\openWeatherMap\\": "src"
 		}
 	}
 }

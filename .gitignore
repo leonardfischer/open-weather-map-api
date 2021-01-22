@@ -1,0 +1,5 @@
+# Ignore PHPStorm files
+.idea
+
+# Ignore vendor directory
+vendor
