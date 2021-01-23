@@ -21,8 +21,6 @@ class CurrentWeatherData extends AbstractEndpoint
     use UnitTrait;
     use LanguageTrait;
 
-    private const IDENTIFIER = 'weather';
-
     /**
      * @return array
      */
@@ -45,7 +43,7 @@ class CurrentWeatherData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['q'] = $cityName;
 
-        return $this->doRequest(self::IDENTIFIER, $parameters);
+        return $this->doRequest('weather', $parameters);
     }
 
     /**
@@ -60,7 +58,7 @@ class CurrentWeatherData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['id'] = $id;
 
-        return $this->doRequest(self::IDENTIFIER, $parameters);
+        return $this->doRequest('weather', $parameters);
     }
 
     /**
@@ -80,7 +78,7 @@ class CurrentWeatherData extends AbstractEndpoint
         $parameters['lat'] = $latitude;
         $parameters['lon'] = $longitude;
 
-        return $this->doRequest(self::IDENTIFIER, $parameters);
+        return $this->doRequest('weather', $parameters);
     }
 
     /**
@@ -100,7 +98,7 @@ class CurrentWeatherData extends AbstractEndpoint
             $parameters['zip'] .= ',' . $country;
         }
 
-        return $this->doRequest(self::IDENTIFIER, $parameters);
+        return $this->doRequest('weather', $parameters);
     }
 
     /**
