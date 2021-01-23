@@ -41,13 +41,11 @@ abstract class AbstractEndpoint
     {
         $response = $this->api->fetch($endpoint, $parameters);
 
-        if (isset($parameters['mode']) && $parameters['mode'] === Mode::XML)
-        {
+        if (isset($parameters['mode']) && $parameters['mode'] === Mode::XML) {
             return new XmlResponse($response);
         }
 
-        if (isset($parameters['mode']) && $parameters['mode'] === Mode::HTML)
-        {
+        if (isset($parameters['mode']) && $parameters['mode'] === Mode::HTML) {
             return new HtmlResponse($response);
         }
 

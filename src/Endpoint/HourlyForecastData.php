@@ -44,8 +44,7 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['q'] = $cityName;
 
-        if ($parameters['mode'] === Mode::HTML)
-        {
+        if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
@@ -65,14 +64,12 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['id'] = $id;
 
-        if ($parameters['mode'] === Mode::HTML)
-        {
+        if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
         return $this->doRequest('forecast/hourly', $parameters);
     }
-
 
     /**
      * You can search weather forecast for 4 days with data every hour by geographic coordinates.
@@ -89,8 +86,7 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters['lat'] = $latitude;
         $parameters['lon'] = $longitude;
 
-        if ($parameters['mode'] === Mode::HTML)
-        {
+        if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
@@ -108,14 +104,12 @@ class HourlyForecastData extends AbstractEndpoint
     {
         $parameters = $this->getSharedParameters();
         $parameters['zip'] = $zip;
-        
-        if ($parameters['mode'] === Mode::HTML)
-        {
+
+        if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        if ($country !== null)
-        {
+        if ($country !== null) {
             $parameters['zip'] .= ',' . $country;
         }
 

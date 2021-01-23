@@ -93,8 +93,7 @@ class CurrentWeatherData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['zip'] = $zip;
 
-        if ($country !== null)
-        {
+        if ($country !== null) {
             $parameters['zip'] .= ',' . $country;
         }
 
@@ -152,8 +151,7 @@ class CurrentWeatherData extends AbstractEndpoint
      */
     public function bySeveralCityId(array $ids): AbstractResponse
     {
-        if (count($ids) !== count(array_filter($ids, 'is_int')))
-        {
+        if (count($ids) !== count(array_filter($ids, 'is_int'))) {
             throw new InvalidArgumentException('You need to provide only integer values.');
         }
 
