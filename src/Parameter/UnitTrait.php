@@ -25,10 +25,15 @@ trait UnitTrait
      */
     public function setUnit(?string $unit): self
     {
+        if ($unit === null) {
+            $this->unit = $unit;
+
+            return $this;
+        }
+
         $available = Unit::getAll();
 
-        if (!in_array($unit, $available, true))
-        {
+        if (!in_array($unit, $available, true)) {
             throw new InvalidArgumentException(sprintf('The provided unit "%s" is not available, choose on of %s.', $unit, implode(', ', $available)));
         }
 

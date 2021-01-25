@@ -13,14 +13,14 @@ use InvalidArgumentException;
 trait CountTrait
 {
     /**
-     * @var string|null
+     * @var int|null
      */
     private $count = null;
 
     /**
      * Method to set the count.
      *
-     * @param string|null $count
+     * @param int|null $count
      * @return $this
      */
     public function setCount(?int $count): self

@@ -25,10 +25,15 @@ trait LanguageTrait
      */
     public function setLanguage(?string $language): self
     {
+        if ($language === null) {
+            $this->language = $language;
+
+            return $this;
+        }
+
         $available = Language::getAll();
 
-        if (!in_array($language, $available, true))
-        {
+        if (!in_array($language, $available, true)) {
             throw new InvalidArgumentException(sprintf('The provided language "%s" is not available, choose on of %s.', $language, implode(', ', $available)));
         }
 

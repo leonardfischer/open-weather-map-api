@@ -25,10 +25,15 @@ trait ModeTrait
      */
     public function setMode(?string $mode): self
     {
+        if ($mode === null) {
+            $this->mode = null;
+
+            return $this;
+        }
+
         $available = Mode::getAll();
 
-        if (!in_array($mode, $available, true))
-        {
+        if (!in_array($mode, $available, true)) {
             throw new InvalidArgumentException(sprintf('The provided mode "%s" is not available, choose on of %s. Or none (=null) for JSON.', $mode, implode(', ', $available)));
         }
 
