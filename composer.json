@@ -29,5 +29,10 @@
 		"psr-4": {
 			"lfischer\\openWeatherMap\\": "src"
 		}
+	},
+	"require-dev": {
+		"psalm/phar": "^4.3",
+		"phpunit/phpunit": "^9",
+		"friendsofphp/php-cs-fixer": "^2.18"
 	}
 }

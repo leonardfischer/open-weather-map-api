@@ -5,7 +5,7 @@ namespace lfischer\openWeatherMap\RequestAdapter;
 use GuzzleHttp\Client;
 
 /**
- * Class Guzzle
+ * This class will use {@see Client} in order to request the open-weather-map API.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\RequestAdapter

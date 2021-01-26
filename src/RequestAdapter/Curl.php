@@ -5,7 +5,7 @@ namespace lfischer\openWeatherMap\RequestAdapter;
 use lfischer\openWeatherMap\Exception\CurlRequestException;
 
 /**
- * Class Curl
+ * This class will use {@see curl_exec} in order to request the open-weather-map API.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\RequestAdapter

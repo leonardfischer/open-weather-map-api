@@ -5,7 +5,7 @@ namespace lfischer\openWeatherMap\RequestAdapter;
 use lfischer\openWeatherMap\Exception\SimpleRequestException;
 
 /**
- * Class Simple.
+ * This class will use {@see file_get_contents} in order to request the open-weather-map API.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\RequestAdapter
