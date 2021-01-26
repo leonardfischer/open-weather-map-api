@@ -1,5 +1,8 @@
 # Ignore PHPStorm files
 .idea
 
+# Ignore PHP CS cache
+.php_cs.cache
+
 # Ignore vendor directory
 vendor
