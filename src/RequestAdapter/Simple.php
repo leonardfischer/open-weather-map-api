@@ -21,8 +21,7 @@ class Simple implements RequestAdapterInterface
     {
         $response = file_get_contents($url);
 
-        if ($response === false)
-        {
+        if ($response === false) {
             throw new SimpleRequestException('Fetching the API data via "file_get_contents" resultet in an error.');
         }
 

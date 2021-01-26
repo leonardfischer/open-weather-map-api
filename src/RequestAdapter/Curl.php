@@ -34,11 +34,10 @@ class Curl implements RequestAdapterInterface
 
         curl_close($resource);
 
-        if ($response === false)
-        {
+        if ($response === false) {
             throw new CurlRequestException(curl_error($resource));
         }
 
-        return $response;
+        return (string)$response;
     }
 }
