@@ -6,3 +6,6 @@
 
 # Ignore vendor directory
 vendor
+
+# Example file
+index.php

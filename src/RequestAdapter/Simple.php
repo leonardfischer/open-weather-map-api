@@ -13,6 +13,16 @@ use lfischer\openWeatherMap\Exception\SimpleRequestException;
 class Simple implements RequestAdapterInterface
 {
     /**
+     * Check if this request adapter is applicable in your environment.
+     *
+     * @return bool
+     */
+    public static function isApplicable(): bool
+    {
+        return (bool) ini_get('allow_url_fopen');
+    }
+
+    /**
      * @param string $url
      * @return string
      * @throws SimpleRequestException

@@ -11,6 +11,16 @@ namespace lfischer\openWeatherMap\RequestAdapter;
 class Dump implements RequestAdapterInterface
 {
     /**
+     * Check if this request adapter is applicable in your environment.
+     *
+     * @return bool
+     */
+    public static function isApplicable(): bool
+    {
+        return true;
+    }
+
+    /**
      * @param string $url
      * @return string
      */

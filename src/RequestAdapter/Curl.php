@@ -13,6 +13,16 @@ use lfischer\openWeatherMap\Exception\CurlRequestException;
 class Curl implements RequestAdapterInterface
 {
     /**
+     * Check if this request adapter is applicable in your environment.
+     *
+     * @return bool
+     */
+    public static function isApplicable(): bool
+    {
+        return extension_loaded('curl');
+    }
+
+    /**
      * @param string $url
      * @return string
      * @throws CurlRequestException
