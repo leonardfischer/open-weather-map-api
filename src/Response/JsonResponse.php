@@ -22,8 +22,7 @@ class JsonResponse extends AbstractResponse
     {
         $response = json_decode($this->response, true);
 
-        if (json_last_error() !== JSON_ERROR_NONE)
-        {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new JsonDecodeException(json_last_error_msg());
         }
 

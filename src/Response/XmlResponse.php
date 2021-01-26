@@ -24,13 +24,11 @@ class XmlResponse extends AbstractResponse
         libxml_use_internal_errors(true);
         $response = simplexml_load_string($this->response);
 
-        if ($response === false)
-        {
+        if ($response === false) {
             $errorCollection = [];
             $errors = libxml_get_errors();
 
-            foreach ($errors as $error)
-            {
+            foreach ($errors as $error) {
                 $errorCollection[] = "{$error->message} (on line {$error->line}, column {$error->column})";
             }
 
