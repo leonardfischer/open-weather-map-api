@@ -25,7 +25,13 @@ trait CountTrait
      */
     public function setCount(?int $count): self
     {
-        $this->count = $count;
+        if ($count === null) {
+            $this->count = $count;
+
+            return $this;
+        }
+
+        $this->count = min(1, $count);
 
         return $this;
     }

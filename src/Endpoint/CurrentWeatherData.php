@@ -17,9 +17,9 @@ use lfischer\openWeatherMap\Response\AbstractResponse;
  */
 class CurrentWeatherData extends AbstractEndpoint
 {
+    use LanguageTrait;
     use ModeTrait;
     use UnitTrait;
-    use LanguageTrait;
 
     /**
      * @return array

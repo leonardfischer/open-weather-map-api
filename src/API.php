@@ -3,6 +3,7 @@
 namespace lfischer\openWeatherMap;
 
 use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
+use lfischer\openWeatherMap\Endpoint\DailyForecastData;
 use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
 use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
 use lfischer\openWeatherMap\RequestAdapter\Simple;
@@ -81,5 +82,15 @@ class API
     public function getHourlyForecastClient(): HourlyForecastData
     {
         return new HourlyForecastData($this);
+    }
+
+    /**
+     * Get the HourlyForecastData endpoint.
+     *
+     * @return DailyForecastData
+     */
+    public function getDailyForecastClient(): DailyForecastData
+    {
+        return new DailyForecastData($this);
     }
 }

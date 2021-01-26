@@ -8,32 +8,35 @@ use lfischer\openWeatherMap\Parameter\CountTrait;
 use lfischer\openWeatherMap\Parameter\LanguageTrait;
 use lfischer\openWeatherMap\Parameter\Mode;
 use lfischer\openWeatherMap\Parameter\ModeTrait;
+use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class HourlyForecastData
+ * Class DailyForecastData
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint
  */
-class HourlyForecastData extends AbstractEndpoint
+class DailyForecastData extends AbstractEndpoint
 {
     use CountTrait;
     use LanguageTrait;
     use ModeTrait;
+    use UnitTrait;
 
     /**
      * @return array
      */
     private function getSharedParameters(): array
     {
-        return $this->getModeParameter()
-            + $this->getCountParameter()
-            + $this->getLanguageParameter();
+        return $this->getCountParameter()
+            + $this->getLanguageParameter()
+            + $this->getModeParameter()
+            + $this->getUnitParameter();
     }
 
     /**
-     * You can search weather forecast for 4 days (96 hours) with data every hour by city name.
+     * You can search 16 day weather forecast with daily average parameters by city name.
      * All weather data can be obtained in JSON and XML formats.
      *
      * @param string $cityName The city name can also contain the state code and country code.
@@ -48,11 +51,11 @@ class HourlyForecastData extends AbstractEndpoint
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('forecast/hourly', $parameters);
+        return $this->doRequest('forecast/daily', $parameters);
     }
 
     /**
-     * You can search weather forecast for 4 days with data every hour by city ID.
+     * You can search weather forecast for 16 days with data every day by city ID.
      * A list of city IDs can be downloaded at: http://bulk.openweathermap.org/sample/
      * It is recommended to call the API by city ID to get unambiguous result for your city.
      *
@@ -68,11 +71,12 @@ class HourlyForecastData extends AbstractEndpoint
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('forecast/hourly', $parameters);
+        return $this->doRequest('forecast/daily', $parameters);
     }
 
     /**
-     * You can search weather forecast for 4 days with data every hour by geographic coordinates.
+     * You can seach 16 day weather forecast with daily average parameters by geographic coordinats.
+     * All weather data can be obtained in JSON and XML formats.
      *
      * @param float $latitude
      * @param float $longitude
@@ -90,7 +94,7 @@ class HourlyForecastData extends AbstractEndpoint
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('weather', $parameters);
+        return $this->doRequest('forecast/daily', $parameters);
     }
 
     /**
@@ -113,6 +117,6 @@ class HourlyForecastData extends AbstractEndpoint
             $parameters['zip'] .= ',' . $country;
         }
 
-        return $this->doRequest('weather', $parameters);
+        return $this->doRequest('forecast/daily', $parameters);
     }
 }
