@@ -8,14 +8,14 @@ final class LanguageTest extends TestCase
 {
     use LanguageTrait;
 
-    public function testSetNullCount()
+    public function testSetNullLanguage()
     {
         $this->setLanguage(null);
 
         $this->assertEquals(['lang' => null], $this->getLanguageParameter());
     }
 
-    public function testSetValidCount()
+    public function testSetValidLanguage()
     {
         $this->setLanguage(Language::GREEK);
         $this->assertEquals(['lang' => 'el'], $this->getLanguageParameter());
