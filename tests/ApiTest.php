@@ -5,9 +5,7 @@ use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
 use lfischer\openWeatherMap\Endpoint\DailyForecastData;
 use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
 use lfischer\openWeatherMap\RequestAdapter\Dump;
-use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
 
 final class ApiTest extends TestCase
 {
