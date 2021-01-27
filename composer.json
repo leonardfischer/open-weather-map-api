@@ -27,7 +27,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"lfischer\\openWeatherMap\\": "src"
+			"lfischer\\openWeatherMap\\": "src/"
 		}
 	},
 	"require-dev": {
