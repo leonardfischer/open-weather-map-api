@@ -31,7 +31,7 @@ trait CountTrait
             return $this;
         }
 
-        $this->count = min(1, $count);
+        $this->count = max(1, $count);
 
         return $this;
     }
