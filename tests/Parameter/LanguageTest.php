@@ -1,40 +1,47 @@
 <?php declare(strict_types=1);
 
-use lfischer\openWeatherMap\Parameter\CountTrait;
+use lfischer\openWeatherMap\Parameter\Language;
+use lfischer\openWeatherMap\Parameter\LanguageTrait;
 use PHPUnit\Framework\TestCase;
 
-final class CountTest extends TestCase
+final class LanguageTest extends TestCase
 {
-    use CountTrait;
+    use LanguageTrait;
 
     public function testSetNullCount()
     {
-        $this->setCount(null);
+        $this->setLanguage(null);
 
-        $this->assertEquals(['cnt' => null], $this->getCountParameter());
+        $this->assertEquals(['lang' => null], $this->getLanguageParameter());
     }
 
     public function testSetValidCount()
     {
-        $this->setCount(0);
-        $this->assertEquals(['cnt' => 1], $this->getCountParameter());
+        $this->setLanguage(Language::GREEK);
+        $this->assertEquals(['lang' => 'el'], $this->getLanguageParameter());
 
-        $this->setCount(1);
-        $this->assertEquals(['cnt' => 1], $this->getCountParameter());
+        $this->setLanguage(Language::ENGLISH);
+        $this->assertEquals(['lang' => 'en'], $this->getLanguageParameter());
 
-        $this->setCount(50);
-        $this->assertEquals(['cnt' => 50], $this->getCountParameter());
+        $this->setLanguage(Language::GERMAN);
+        $this->assertEquals(['lang' => 'de'], $this->getLanguageParameter());
     }
 
     public function testSetInvalidFloat()
     {
         $this->expectException(TypeError::class);
-        $this->setCount(1.1);
+        $this->setLanguage(1.1);
+    }
+
+    public function testSetInvalidInt()
+    {
+        $this->expectException(TypeError::class);
+        $this->setLanguage(1);
     }
 
     public function testSetInvalidString()
     {
-        $this->expectException(TypeError::class);
-        $this->setCount('1');
+        $this->expectException(InvalidArgumentException::class);
+        $this->setLanguage('foo');
     }
 }
