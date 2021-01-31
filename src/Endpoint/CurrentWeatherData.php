@@ -131,7 +131,7 @@ class CurrentWeatherData extends AbstractEndpoint
      * @param int|null $numberOfCities
      * @return AbstractResponse
      */
-    public function citiesInCircle(float $latitude, float $longitude, ?int $numberOfCities = null)
+    public function citiesInCircle(float $latitude, float $longitude, ?int $numberOfCities = null): AbstractResponse
     {
         Coordinate::validate($latitude, $longitude);
 
