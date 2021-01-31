@@ -3,11 +3,8 @@
 use lfischer\openWeatherMap\API;
 use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
 use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
-use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
 use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
-use lfischer\openWeatherMap\Endpoint\DailyForecastData;
 use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
-use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
 use lfischer\openWeatherMap\RequestAdapter\Dump;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +16,6 @@ final class ApiTest extends TestCase
      * @var API
      */
     private $api;
-    private $prophet;
 
     /**
      * This method is called before each test.
@@ -27,7 +23,6 @@ final class ApiTest extends TestCase
     protected function setUp(): void
     {
         $this->api = new API(self::KEY);
-        $this->prophet = new \Prophecy\Prophet();
     }
 
     public function testUrlFormatting()
