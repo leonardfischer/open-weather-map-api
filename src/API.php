@@ -2,9 +2,10 @@
 
 namespace lfischer\openWeatherMap;
 
-use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
-use lfischer\openWeatherMap\Endpoint\DailyForecastData;
-use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
+use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
+use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
+use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
+use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
 use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
 use lfischer\openWeatherMap\RequestAdapter\Simple;
 
@@ -65,32 +66,42 @@ class API
     }
 
     /**
-     * Get the CurrentWeatherData endpoint.
+     * Get the CurrentWeatherClient endpoint.
      *
-     * @return CurrentWeatherData
+     * @return CurrentWeatherClient
      */
-    public function getCurrentWeatherClient(): CurrentWeatherData
+    public function getCurrentWeatherClient(): CurrentWeatherClient
     {
-        return new CurrentWeatherData($this);
+        return new CurrentWeatherClient($this);
     }
 
     /**
-     * Get the HourlyForecastData endpoint.
+     * Get the HourlyForecastClient endpoint.
      *
-     * @return HourlyForecastData
+     * @return HourlyForecastClient
      */
-    public function getHourlyForecastClient(): HourlyForecastData
+    public function getHourlyForecastClient(): HourlyForecastClient
     {
-        return new HourlyForecastData($this);
+        return new HourlyForecastClient($this);
     }
 
     /**
-     * Get the HourlyForecastData endpoint.
+     * Get the DailyForecastClient endpoint.
      *
-     * @return DailyForecastData
+     * @return DailyForecastClient
      */
-    public function getDailyForecastClient(): DailyForecastData
+    public function getDailyForecastClient(): DailyForecastClient
     {
-        return new DailyForecastData($this);
+        return new DailyForecastClient($this);
+    }
+
+    /**
+     * Get the ClimateForecastClient endpoint.
+     *
+     * @return ClimateForecastClient
+     */
+    public function getClimateForecastClient(): ClimateForecastClient
+    {
+        return new ClimateForecastClient($this);
     }
 }

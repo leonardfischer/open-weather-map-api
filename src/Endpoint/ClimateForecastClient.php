@@ -4,36 +4,40 @@ namespace lfischer\openWeatherMap\Endpoint;
 
 use InvalidArgumentException;
 use lfischer\openWeatherMap\Helper\Coordinate;
+use lfischer\openWeatherMap\Helper\Count;
 use lfischer\openWeatherMap\Parameter\CountTrait;
 use lfischer\openWeatherMap\Parameter\LanguageTrait;
 use lfischer\openWeatherMap\Parameter\Mode;
 use lfischer\openWeatherMap\Parameter\ModeTrait;
+use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class HourlyForecastData
+ * Class ClimateForecastClient
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint
  */
-class HourlyForecastData extends AbstractEndpoint
+class ClimateForecastClient extends AbstractEndpoint
 {
     use CountTrait;
     use LanguageTrait;
     use ModeTrait;
+    use UnitTrait;
 
     /**
      * @return array
      */
     private function getSharedParameters(): array
     {
-        return $this->getModeParameter()
-            + $this->getCountParameter()
-            + $this->getLanguageParameter();
+        return $this->getCountParameter()
+            + $this->getLanguageParameter()
+            + $this->getModeParameter()
+            + $this->getUnitParameter();
     }
 
     /**
-     * You can search weather forecast for 4 days (96 hours) with data every hour by city name.
+     * You can search climate forecast for 30 days.
      * All weather data can be obtained in JSON and XML formats.
      *
      * @param string $cityName The city name can also contain the state code and country code.
@@ -44,15 +48,19 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['q'] = $cityName;
 
+        if ($parameters['cnt'] !== null) {
+            Count::validate($parameters['cnt'], 1, 16);
+        }
+
         if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('forecast/hourly', $parameters);
+        return $this->doRequest('forecast/climate', $parameters);
     }
 
     /**
-     * You can search weather forecast for 4 days with data every hour by city ID.
+     * You can search weather climate for 30 days.
      * A list of city IDs can be downloaded at: http://bulk.openweathermap.org/sample/
      * It is recommended to call the API by city ID to get unambiguous result for your city.
      *
@@ -64,15 +72,19 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['id'] = $id;
 
+        if ($parameters['cnt'] !== null) {
+            Count::validate($parameters['cnt'], 1, 16);
+        }
+
         if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('forecast/hourly', $parameters);
+        return $this->doRequest('forecast/climate', $parameters);
     }
 
     /**
-     * You can search weather forecast for 4 days with data every hour by geographic coordinates.
+     * You can search weather climate for 30 days.
      *
      * @param float $latitude
      * @param float $longitude
@@ -86,11 +98,15 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters['lat'] = $latitude;
         $parameters['lon'] = $longitude;
 
+        if ($parameters['cnt'] !== null) {
+            Count::validate($parameters['cnt'], 1, 16);
+        }
+
         if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
 
-        return $this->doRequest('weather', $parameters);
+        return $this->doRequest('forecast/climate', $parameters);
     }
 
     /**
@@ -105,6 +121,10 @@ class HourlyForecastData extends AbstractEndpoint
         $parameters = $this->getSharedParameters();
         $parameters['zip'] = $zip;
 
+        if ($parameters['cnt'] !== null) {
+            Count::validate($parameters['cnt'], 1, 16);
+        }
+
         if ($parameters['mode'] === Mode::HTML) {
             throw new InvalidArgumentException(sprintf('The mode "%s" is not applicable to this API call.', Mode::HTML));
         }
@@ -113,6 +133,6 @@ class HourlyForecastData extends AbstractEndpoint
             $parameters['zip'] .= ',' . $country;
         }
 
-        return $this->doRequest('weather', $parameters);
+        return $this->doRequest('forecast/climate', $parameters);
     }
 }
