@@ -2,57 +2,95 @@
 
 namespace lfischer\openWeatherMap;
 
+use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
+use lfischer\openWeatherMap\Endpoint\DailyForecastData;
+use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
+use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
+use lfischer\openWeatherMap\RequestAdapter\Simple;
+
 /**
  * Basic Weather API class to execute predefined requests.
  *
- * @author Leonard Fischer <post@leonard.fischer.de>
+ * @author  Leonard Fischer <post@leonard.fischer.de>
+ * @package lfischer\openWeatherMap
  */
-class API extends Request
+class API
 {
+    public const URL = 'http://api.openweathermap.org/data/2.5/';
+
     /**
-     * Retrieves weather data by a (API internal) "city ID".
-     *
-     * @param integer $id
-     * @return array
+     * @var string
      */
-    public function getByCityId($id)
+    private $apiKey;
+
+    /**
+     * @var RequestAdapterInterface
+     */
+    private $requestAdapter;
+
+    /**
+     * Constructor.
+     *
+     * @param string $apiKey
+     */
+    public function __construct(string $apiKey)
     {
-        return $this->fetch(['id' => $id])->getResponseArray();
+        $this->apiKey = $apiKey;
+        $this->requestAdapter = new Simple();
     }
 
     /**
-     * Retrieves weather data by geo coordinates.
-     *
-     * @param float $lat
-     * @param float $lng
-     * @return array
+     * @param string $endpoints
+     * @param array  $parameters
+     * @return string
      */
-    public function getByCoordinates($lat, $lng)
+    public function fetch(string $endpoints, array $parameters = []): string
     {
-        return $this->fetch(['lat' => $lat, 'lon' => $lng])->getResponseArray();
+        $url = self::URL . $endpoints . '?' . http_build_query(array_filter(['appid' => $this->apiKey] + $parameters));
+
+        return $this->requestAdapter->request($url);
     }
 
     /**
-     * Retrieves weather data by ZIP code and (optional) country code.
+     * Set a different request adapter to have more control over the request and response.
      *
-     * @param string $zip
-     * @param string $countryCode
-     * @return array
+     * @param RequestAdapterInterface $requestAdapter
+     * @return $this
      */
-    public function getByZipCode($zip, $countryCode = null)
+    public function setRequestAdapter(RequestAdapterInterface $requestAdapter): self
     {
-        return $this->fetch(['zip' => $zip . ($countryCode !== null ? ',' . $countryCode : '')])->getResponseArray();
+        $this->requestAdapter = $requestAdapter;
+
+        return $this;
     }
-    
+
     /**
-     * Retrieves weather data by city name and (optional) country code.
+     * Get the CurrentWeatherData endpoint.
      *
-     * @param string $city
-     * @param string $countryCode
-     * @return array
+     * @return CurrentWeatherData
      */
-    public function getByCityName($city, $countryCode = null)
+    public function getCurrentWeatherClient(): CurrentWeatherData
     {
-        return $this->fetch(['q' => $city . ($countryCode !== null ? ',' . $countryCode : '')])->getResponseArray();
+        return new CurrentWeatherData($this);
+    }
+
+    /**
+     * Get the HourlyForecastData endpoint.
+     *
+     * @return HourlyForecastData
+     */
+    public function getHourlyForecastClient(): HourlyForecastData
+    {
+        return new HourlyForecastData($this);
+    }
+
+    /**
+     * Get the HourlyForecastData endpoint.
+     *
+     * @return DailyForecastData
+     */
+    public function getDailyForecastClient(): DailyForecastData
+    {
+        return new DailyForecastData($this);
     }
 }
