@@ -66,6 +66,16 @@ class API
     }
 
     /**
+     * Get the ClimateForecastClient endpoint.
+     *
+     * @return ClimateForecastClient
+     */
+    public function getClimateForecastClient(): ClimateForecastClient
+    {
+        return new ClimateForecastClient($this);
+    }
+
+    /**
      * Get the CurrentWeatherClient endpoint.
      *
      * @return CurrentWeatherClient
@@ -73,16 +83,6 @@ class API
     public function getCurrentWeatherClient(): CurrentWeatherClient
     {
         return new CurrentWeatherClient($this);
-    }
-
-    /**
-     * Get the HourlyForecastClient endpoint.
-     *
-     * @return HourlyForecastClient
-     */
-    public function getHourlyForecastClient(): HourlyForecastClient
-    {
-        return new HourlyForecastClient($this);
     }
 
     /**
@@ -96,12 +96,12 @@ class API
     }
 
     /**
-     * Get the ClimateForecastClient endpoint.
+     * Get the HourlyForecastClient endpoint.
      *
-     * @return ClimateForecastClient
+     * @return HourlyForecastClient
      */
-    public function getClimateForecastClient(): ClimateForecastClient
+    public function getHourlyForecastClient(): HourlyForecastClient
     {
-        return new ClimateForecastClient($this);
+        return new HourlyForecastClient($this);
     }
 }

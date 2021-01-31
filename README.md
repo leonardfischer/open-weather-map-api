@@ -27,9 +27,10 @@ $weather = (new API('<API-key here>'))
 The goal is to implement classes for every [data collection API endpoint](https://openweathermap.org/api). The main
 `API` class has accessor methods for each available endpoint.
 
-- `$api->getCurrentWeatherClient()` returns an instance of `CurrentWeatherData`.
-- `$api->getHourlyForecastClient()` returns an instance of `HourlyForecastData`.
-- `$api->getDailyForecastClient()` returns an instance of `DailyForecastData`.
+- `$api->getClimateForecastClient()` returns an instance of `ClimateForecastClient`.
+- `$api->getCurrentWeatherClient()` returns an instance of `CurrentWeatherClient`.
+- `$api->getHourlyForecastClient()` returns an instance of `HourlyForecastClient`.
+- `$api->getDailyForecastClient()` returns an instance of `DailyForecastClient`.
 
 ## More convenience
 
