@@ -1,8 +1,12 @@
 <?php declare(strict_types=1);
 
 use lfischer\openWeatherMap\API;
+use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
+use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
 use lfischer\openWeatherMap\Endpoint\CurrentWeatherData;
+use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
 use lfischer\openWeatherMap\Endpoint\DailyForecastData;
+use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
 use lfischer\openWeatherMap\Endpoint\HourlyForecastData;
 use lfischer\openWeatherMap\RequestAdapter\Dump;
 use PHPUnit\Framework\TestCase;
@@ -37,16 +41,21 @@ final class ApiTest extends TestCase
 
     public function testGetCurrentWeatherClient()
     {
-        $this->assertInstanceOf(CurrentWeatherData::class, $this->api->getCurrentWeatherClient());
+        $this->assertInstanceOf(CurrentWeatherClient::class, $this->api->getCurrentWeatherClient());
     }
 
     public function testGetHourlyForecastClient()
     {
-        $this->assertInstanceOf(HourlyForecastData::class, $this->api->getHourlyForecastClient());
+        $this->assertInstanceOf(HourlyForecastClient::class, $this->api->getHourlyForecastClient());
     }
 
     public function testGetDailyForecastClient()
     {
-        $this->assertInstanceOf(DailyForecastData::class, $this->api->getDailyForecastClient());
+        $this->assertInstanceOf(DailyForecastClient::class, $this->api->getDailyForecastClient());
+    }
+
+    public function testGetClimateForecastClient()
+    {
+        $this->assertInstanceOf(ClimateForecastClient::class, $this->api->getClimateForecastClient());
     }
 }
