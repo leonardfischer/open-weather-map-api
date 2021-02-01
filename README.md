@@ -31,6 +31,7 @@ The goal is to implement classes for every [data collection API endpoint](https:
 - `$api->getCurrentWeatherClient()` returns an instance of `CurrentWeatherClient`.
 - `$api->getHourlyForecastClient()` returns an instance of `HourlyForecastClient`.
 - `$api->getDailyForecastClient()` returns an instance of `DailyForecastClient`.
+- `$api->getOneCallClient()` returns an instance of `OneCallClient`.
 
 ## More convenience
 

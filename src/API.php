@@ -6,6 +6,7 @@ use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
 use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
 use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
 use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
+use lfischer\openWeatherMap\Endpoint\OneCallClient;
 use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
 use lfischer\openWeatherMap\RequestAdapter\Simple;
 
@@ -103,5 +104,15 @@ class API
     public function getHourlyForecastClient(): HourlyForecastClient
     {
         return new HourlyForecastClient($this);
+    }
+
+    /**
+     * Get the OneCallClient endpoint.
+     *
+     * @return OneCallClient
+     */
+    public function getOneCallClient(): OneCallClient
+    {
+        return new OneCallClient($this);
     }
 }
