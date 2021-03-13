@@ -17,12 +17,12 @@ use lfischer\openWeatherMap\API;
 
 // Get weather data by a city and (optional) country name.
 $weather = (new API('<API-key here>'))
-    ->getCurrentWeatherClient()
+    ->getCurrentWeather()
     ->byCityName('Dusseldorf,Germany');
 
 // Get weather data by a "city ID".
 $weather = (new API('<API-key here>'))
-    ->getCurrentWeatherClient()
+    ->getCurrentWeather()
     ->byCityId(524901);
 ```
 
@@ -40,11 +40,11 @@ Also it is possible to use different **units** like "metric" and "imperial".
 The goal is to implement PHP classes for every [data collection API endpoint](https://openweathermap.org/api). The main
 `API` class has accessor methods for each available endpoint.
 
-- `$api->getClimateForecastClient()` returns an instance of `ClimateForecastClient`.
-- `$api->getCurrentWeatherClient()` returns an instance of `CurrentWeatherClient`.
-- `$api->getHourlyForecastClient()` returns an instance of `HourlyForecastClient`.
-- `$api->getDailyForecastClient()` returns an instance of `DailyForecastClient`.
-- `$api->getOneCallClient()` returns an instance of `OneCallClient`.
+- `$api->getClimateForecast()` returns an instance of `ClimateForecastEndpoint`.
+- `$api->getCurrentWeather()` returns an instance of `CurrentWeatherEndpoint`.
+- `$api->getHourlyForecast()` returns an instance of `HourlyForecastEndpoint`.
+- `$api->getDailyForecast()` returns an instance of `DailyForecastEndpoint`.
+- `$api->getOneCall()` returns an instance of `OneCallEndpoint`.
 
 **Sadly some endpoints require a paid subscription which I don't have. If anyone likes to contribute or test the
 affected endpoints please let me know!**
@@ -64,7 +64,7 @@ use lfischer\openWeatherMap\Parameter\Mode;
 use lfischer\openWeatherMap\Parameter\Unit;
 
 $weather = (new API('<API-key here>'))
-    ->getCurrentWeatherClient()
+    ->getCurrentWeather()
     ->setMode(Mode::XML)
     ->setUnit(Unit::METRIC)
     ->setLanguage(Language::ENGLISH)
@@ -73,7 +73,7 @@ $weather = (new API('<API-key here>'))
 
 ## Different Request options
 
-The client can use three different request adapters, according to your environment and possible other libraries.
+The API client can use three different request adapters, according to your environment and possible other libraries.
 
 ### cURL
 
