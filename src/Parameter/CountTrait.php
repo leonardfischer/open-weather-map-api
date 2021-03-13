@@ -2,8 +2,6 @@
 
 namespace lfischer\openWeatherMap\Parameter;
 
-use InvalidArgumentException;
-
 /**
  * Trait CountTrait
  *
