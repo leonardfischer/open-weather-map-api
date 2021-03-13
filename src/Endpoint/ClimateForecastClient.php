@@ -13,7 +13,7 @@ use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class ClimateForecastClient
+ * Class ClimateForecastClient.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint

@@ -9,7 +9,7 @@ use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class OneCallClient
+ * Class OneCallClient.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint
@@ -67,7 +67,7 @@ class OneCallClient extends AbstractEndpoint
      *
      * @param float $latitude
      * @param float $longitude
-     * @param int $timestamp
+     * @param int   $timestamp
      * @return AbstractResponse
      * @throws InvalidArgumentException
      */
