@@ -10,12 +10,12 @@ use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class CurrentWeatherClient
+ * Class CurrentWeatherEndpoint
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint
  */
-class CurrentWeatherClient extends AbstractEndpoint
+class CurrentWeatherEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
     use ModeTrait;

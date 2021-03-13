@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
 
 use lfischer\openWeatherMap\API;
-use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
-use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
-use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
-use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
+use lfischer\openWeatherMap\Endpoint\ClimateForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\CurrentWeatherEndpoint;
+use lfischer\openWeatherMap\Endpoint\DailyForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\HourlyForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\OneCallEndpoint;
 use lfischer\openWeatherMap\RequestAdapter\Dump;
 use PHPUnit\Framework\TestCase;
 
@@ -34,23 +35,28 @@ final class ApiTest extends TestCase
         $this->assertEquals(API::URL . 'endpoint?appid=' . self::KEY . '&a=1&b=2', $url);
     }
 
-    public function testGetCurrentWeatherClient()
+    public function testGetCurrentWeatherEndpoint()
     {
-        $this->assertInstanceOf(CurrentWeatherClient::class, $this->api->getCurrentWeatherClient());
+        $this->assertInstanceOf(CurrentWeatherEndpoint::class, $this->api->getCurrentWeather());
     }
 
-    public function testGetHourlyForecastClient()
+    public function testGetHourlyForecastEndpoint()
     {
-        $this->assertInstanceOf(HourlyForecastClient::class, $this->api->getHourlyForecastClient());
+        $this->assertInstanceOf(HourlyForecastEndpoint::class, $this->api->getHourlyForecast());
     }
 
-    public function testGetDailyForecastClient()
+    public function testGetDailyForecastEndpoint()
     {
-        $this->assertInstanceOf(DailyForecastClient::class, $this->api->getDailyForecastClient());
+        $this->assertInstanceOf(DailyForecastEndpoint::class, $this->api->getDailyForecast());
     }
 
-    public function testGetClimateForecastClient()
+    public function testGetClimateForecastEndpoint()
     {
-        $this->assertInstanceOf(ClimateForecastClient::class, $this->api->getClimateForecastClient());
+        $this->assertInstanceOf(ClimateForecastEndpoint::class, $this->api->getClimateForecast());
+    }
+
+    public function testGetOneCallEndpoint()
+    {
+        $this->assertInstanceOf(OneCallEndpoint::class, $this->api->getOneCall());
     }
 }

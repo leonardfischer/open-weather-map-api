@@ -9,12 +9,12 @@ use lfischer\openWeatherMap\Parameter\UnitTrait;
 use lfischer\openWeatherMap\Response\AbstractResponse;
 
 /**
- * Class OneCallClient.
+ * Class OneCallEndpoint.
  *
  * @author  Leonard Fischer <post@leonard.fischer.de>
  * @package lfischer\openWeatherMap\Endpoint
  */
-class OneCallClient extends AbstractEndpoint
+class OneCallEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
     use UnitTrait;

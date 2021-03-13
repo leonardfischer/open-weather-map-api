@@ -2,11 +2,11 @@
 
 namespace lfischer\openWeatherMap;
 
-use lfischer\openWeatherMap\Endpoint\ClimateForecastClient;
-use lfischer\openWeatherMap\Endpoint\CurrentWeatherClient;
-use lfischer\openWeatherMap\Endpoint\DailyForecastClient;
-use lfischer\openWeatherMap\Endpoint\HourlyForecastClient;
-use lfischer\openWeatherMap\Endpoint\OneCallClient;
+use lfischer\openWeatherMap\Endpoint\ClimateForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\CurrentWeatherEndpoint;
+use lfischer\openWeatherMap\Endpoint\DailyForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\HourlyForecastEndpoint;
+use lfischer\openWeatherMap\Endpoint\OneCallEndpoint;
 use lfischer\openWeatherMap\RequestAdapter\RequestAdapterInterface;
 use lfischer\openWeatherMap\RequestAdapter\Simple;
 
@@ -69,50 +69,50 @@ class API
     /**
      * Get the ClimateForecastClient endpoint.
      *
-     * @return ClimateForecastClient
+     * @return ClimateForecastEndpoint
      */
-    public function getClimateForecastClient(): ClimateForecastClient
+    public function getClimateForecast(): ClimateForecastEndpoint
     {
-        return new ClimateForecastClient($this);
+        return new ClimateForecastEndpoint($this);
     }
 
     /**
      * Get the CurrentWeatherClient endpoint.
      *
-     * @return CurrentWeatherClient
+     * @return CurrentWeatherEndpoint
      */
-    public function getCurrentWeatherClient(): CurrentWeatherClient
+    public function getCurrentWeather(): CurrentWeatherEndpoint
     {
-        return new CurrentWeatherClient($this);
+        return new CurrentWeatherEndpoint($this);
     }
 
     /**
      * Get the DailyForecastClient endpoint.
      *
-     * @return DailyForecastClient
+     * @return DailyForecastEndpoint
      */
-    public function getDailyForecastClient(): DailyForecastClient
+    public function getDailyForecast(): DailyForecastEndpoint
     {
-        return new DailyForecastClient($this);
+        return new DailyForecastEndpoint($this);
     }
 
     /**
      * Get the HourlyForecastClient endpoint.
      *
-     * @return HourlyForecastClient
+     * @return HourlyForecastEndpoint
      */
-    public function getHourlyForecastClient(): HourlyForecastClient
+    public function getHourlyForecast(): HourlyForecastEndpoint
     {
-        return new HourlyForecastClient($this);
+        return new HourlyForecastEndpoint($this);
     }
 
     /**
      * Get the OneCallClient endpoint.
      *
-     * @return OneCallClient
+     * @return OneCallEndpoint
      */
-    public function getOneCallClient(): OneCallClient
+    public function getOneCall(): OneCallEndpoint
     {
-        return new OneCallClient($this);
+        return new OneCallEndpoint($this);
     }
 }
