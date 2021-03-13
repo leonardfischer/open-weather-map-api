@@ -3,6 +3,7 @@
 namespace lfischer\openWeatherMap\RequestAdapter;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This class will use {@see Client} in order to request the open-weather-map API.
@@ -40,7 +41,7 @@ class Guzzle implements RequestAdapterInterface
     /**
      * @param string $url
      * @return string
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function request(string $url): string
     {

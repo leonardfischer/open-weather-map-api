@@ -19,7 +19,7 @@ class Simple implements RequestAdapterInterface
      */
     public static function isApplicable(): bool
     {
-        return (bool) ini_get('allow_url_fopen');
+        return (bool)ini_get('allow_url_fopen');
     }
 
     /**

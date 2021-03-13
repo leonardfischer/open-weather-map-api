@@ -11,15 +11,15 @@ namespace lfischer\openWeatherMap\RequestAdapter;
 interface RequestAdapterInterface
 {
     /**
-     * @param string $url
-     * @return string
-     */
-    public function request(string $url): string;
-
-    /**
      * Check if this request adapter is applicable in your environment.
      *
      * @return bool
      */
     public static function isApplicable(): bool;
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    public function request(string $url): string;
 }

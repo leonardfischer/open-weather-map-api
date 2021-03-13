@@ -32,12 +32,12 @@ class Curl implements RequestAdapterInterface
         $resource = curl_init();
 
         curl_setopt_array($resource, [
-            CURLINFO_HEADER_OUT => true,
-            CURLOPT_FAILONERROR => true,
-            CURLOPT_FRESH_CONNECT => true,
-            CURLOPT_HEADER => false,
+            CURLINFO_HEADER_OUT    => true,
+            CURLOPT_FAILONERROR    => true,
+            CURLOPT_FRESH_CONNECT  => true,
+            CURLOPT_HEADER         => false,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $url
+            CURLOPT_URL            => $url
         ]);
 
         $response = curl_exec($resource);
