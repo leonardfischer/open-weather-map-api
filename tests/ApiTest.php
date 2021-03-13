@@ -31,7 +31,7 @@ final class ApiTest extends TestCase
             ->setRequestAdapter(new Dump())
             ->fetch('endpoint', ['a' => 1, 'b' => 2]);
 
-        $this->assertEquals(API::URL . 'endpoint?appid=example-key&a=1&b=2', $url);
+        $this->assertEquals(API::URL . 'endpoint?appid=' . self::KEY . '&a=1&b=2', $url);
     }
 
     public function testGetCurrentWeatherClient()
