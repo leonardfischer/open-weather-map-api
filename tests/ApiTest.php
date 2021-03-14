@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace lfischer\openWeatherMap\Tests;
+
 use lfischer\openWeatherMap\API;
 use lfischer\openWeatherMap\Endpoint\ClimateForecastEndpoint;
 use lfischer\openWeatherMap\Endpoint\CurrentWeatherEndpoint;

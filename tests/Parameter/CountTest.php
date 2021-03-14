@@ -1,7 +1,10 @@
 <?php declare(strict_types=1);
 
+namespace lfischer\openWeatherMap\Tests\Parameter;
+
 use lfischer\openWeatherMap\Parameter\CountTrait;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 final class CountTest extends TestCase
 {

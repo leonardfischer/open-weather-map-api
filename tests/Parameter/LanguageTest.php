@@ -1,8 +1,12 @@
 <?php declare(strict_types=1);
 
+namespace lfischer\openWeatherMap\Tests\Parameter;
+
+use InvalidArgumentException;
 use lfischer\openWeatherMap\Parameter\Language;
 use lfischer\openWeatherMap\Parameter\LanguageTrait;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 final class LanguageTest extends TestCase
 {

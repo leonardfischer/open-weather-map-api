@@ -1,8 +1,12 @@
 <?php declare(strict_types=1);
 
+namespace lfischer\openWeatherMap\Tests\Parameter;
+
+use InvalidArgumentException;
 use lfischer\openWeatherMap\Parameter\Mode;
 use lfischer\openWeatherMap\Parameter\ModeTrait;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 final class ModeTest extends TestCase
 {

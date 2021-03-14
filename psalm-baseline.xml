@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.3.1@2feba22a005a18bf31d4c7b9bdb9252c73897476">
+<files psalm-version="4.x-dev@">
   <file src="src/RequestAdapter/Guzzle.php">
     <UndefinedClass occurrences="1">
       <code>Client</code>
     </UndefinedClass>
-    <UndefinedDocblockClass occurrences="3">
+    <UndefinedDocblockClass occurrences="2">
       <code>$this-&gt;client</code>
       <code>Client</code>
-      <code>\GuzzleHttp\Exception\GuzzleException</code>
     </UndefinedDocblockClass>
   </file>
 </files>
