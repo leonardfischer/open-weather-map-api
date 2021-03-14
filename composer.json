@@ -38,6 +38,7 @@
   "require-dev": {
     "psalm/phar": "^4.6",
     "phpunit/phpunit": "^9.5",
-    "friendsofphp/php-cs-fixer": "^2.18"
+    "friendsofphp/php-cs-fixer": "^2.18",
+    "phpro/grumphp-shim": "^1.3"
   }
 }
