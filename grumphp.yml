@@ -13,7 +13,9 @@ grumphp:
         - "dd("
         - "exit;"
       triggered_by: [ "php" ]
-    phpcsfixer: ~
+    phpcsfixer:
+      config: .php_cs
+      triggered_by: ['php']
     phpunit:
       testsuite: Unit
     psalm:
